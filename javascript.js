@@ -1,3 +1,15 @@
+const addBookButton = document.querySelector("#addBookButton");
+const sumbitButton = document.querySelector("#submitButton");
+const form = document.querySelector("#form");
+
+addBookButton.addEventListener("click", () => {
+    form.removeAttribute("hidden");
+});
+
+
+
+let myLibrary = [];
+
 function Book (title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -10,19 +22,6 @@ function Book (title, author, pages, read) {
             return (`${title} by ${author}, ${pages}, already read`);
         }
     }
-}
-
-const addBookButton = document.querySelector("#addBookButton");
-const form = document.querySelector("#form");
-
-addBookButton.addEventListener("click", ()=> {
-    console.log(form.getAttribute("hidden"));
-})
-
-let myLibrary = [];
-
-function Book() {
-    
 }
 
 function addBookToLibrary() {

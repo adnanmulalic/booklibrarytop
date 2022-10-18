@@ -1,12 +1,14 @@
 const addBookButton = document.querySelector("#addBookButton");
-const sumbitButton = document.querySelector("#submitButton");
+const submitButton = document.querySelector("#submitButton");
 const form = document.querySelector("#form");
 
 addBookButton.addEventListener("click", () => {
-    form.removeAttribute("hidden");
+    form.classList.replace("form-hide", "form-display");
 });
 
-
+submitButton.addEventListener("click", () => {
+    form.classList.replace("form-display", "form-hide");
+})
 
 let myLibrary = [];
 

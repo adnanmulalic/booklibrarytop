@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    text-align: center;
+}
+
+#form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-hide {
+    display: none;
+}
+
+.form-display {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+}

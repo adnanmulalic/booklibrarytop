@@ -1,6 +1,10 @@
 const addBookButton = document.querySelector("#addBookButton");
 const submitButton = document.querySelector("#submitButton");
 const form = document.querySelector("#form");
+let title = document.querySelector("#title");
+let author = document.querySelector("#author");
+let pages = document.querySelector("#pages");
+let hasRead = document.querySelectorAll("input[name=hasRead]");
 
 function Book (title, author, pages, read) {
     this.title = title;
@@ -20,6 +24,7 @@ addBookButton.addEventListener("click", () => {
 });
 
 submitButton.addEventListener("click", () => {
+    myLibrary.push(new Book(title.value, author.value, pages.value, hasRead.value));
     form.classList.replace("form-display", "form-hide");
 })
 

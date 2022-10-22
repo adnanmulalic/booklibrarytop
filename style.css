@@ -27,3 +27,14 @@ main {
     height: 250px;
     gap: 5px;
 }
+
+#book-shelf {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.book {
+    background-color: grey;
+    display: flex;
+    
+}

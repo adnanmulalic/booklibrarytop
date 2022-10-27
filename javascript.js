@@ -7,6 +7,7 @@ const pages = document.querySelector("#pages");
 const hasRead = document.querySelector("#read");
 const bookShelf = document.querySelector("#book-shelf");
 const cancelButton = document.querySelector("#cancel");
+const inputs = document.querySelectorAll("#inputs");
 // {title: "A song of ice and fire", author: "George R.R. Martin", pages: 500, read: true}
 let myLibrary = [];
 
@@ -73,6 +74,9 @@ cancelButton.addEventListener("click", () => {
 })
 
 submitButton.addEventListener("click", () => {
+    if (title.value === "" || author.value === "" || pages.value === "") {
+        
+    }
     addBookToLibrary();
     title.value = author.value = pages.value = ""; hasRead.checked = false;
     form.classList.replace("form-display", "form-hide");

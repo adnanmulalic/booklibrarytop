@@ -19,44 +19,26 @@ function Book (title, author, pages, read) {
 }
 
 function addBookToLibrary() {
-    if (myLibrary.length != 0){
-        myLibrary.forEach(book => {
-            if(title.value === book.title){
-                console.log("same title")
-            } else {
-            let newBook = new Book(title.value, author.value, pages.value, hasRead.checked);
-            myLibrary.push(newBook);
-            let newBookOnShelf = document.createElement("div");
-            let bookTitle = document.createElement("p");
-            bookTitle.innerHTML = newBook.title;
-            let bookAuthor = document.createElement("p");
-            bookAuthor.innerHTML = newBook.author;
-            let bookPages = document.createElement("p");
-            bookPages.innerHTML = newBook.pages;
-            newBookOnShelf.append(bookTitle, bookAuthor, bookPages);
-            newBookOnShelf.classList.add("book");
-            bookShelf.appendChild(newBookOnShelf);
-            //newBook.appendChild(bookInfo);
-            }
-        });
-    } else {
-        let newBook = new Book(title.value, author.value, pages.value, hasRead.checked);
-            myLibrary.push(newBook);
-            let newBookOnShelf = document.createElement("div");
-            let bookTitle = document.createElement("p");
-            bookTitle.innerHTML = newBook.title;
-            let bookAuthor = document.createElement("p");
-            bookAuthor.innerHTML = newBook.author;
-            let bookPages = document.createElement("p");
-            bookPages.innerHTML = newBook.pages;
-            newBookOnShelf.append(bookTitle, bookAuthor, bookPages);
-            newBookOnShelf.classList.add("book");
-            bookShelf.appendChild(newBookOnShelf);
-    }
+    let newBook = new Book(title.value, author.value, pages.value, hasRead.checked);
+    myLibrary.push(newBook);
+    /* let newBookOnShelf = document.createElement("div");
+    let bookTitle = document.createElement("p");
+    bookTitle.innerHTML = newBook.title;
+    let bookAuthor = document.createElement("p");
+    bookAuthor.innerHTML = newBook.author;
+    let bookPages = document.createElement("p");
+    bookPages.innerHTML = newBook.pages;
+    newBookOnShelf.append(bookTitle, bookAuthor, bookPages);
+    newBookOnShelf.classList.add("book");
+    bookShelf.appendChild(newBookOnShelf);
+    //newBook.appendChild(bookInfo); */
 }
 
-function showBooks(books) {
-    books.forEach(book => {
+function showBooks(myLibrary) {
+    myLibrary.forEach(book => {
+        if (book.title === title.value) {
+            
+        }
         newBook.classList.add("book");
         bookShelf.appendChild(newBook);
     });
@@ -74,12 +56,8 @@ cancelButton.addEventListener("click", () => {
 })
 
 submitButton.addEventListener("click", () => {
-    if (title.value != "" || author.value != "" || pages.value != "") {
-        console.log("Missing info. Please fill out all fields.");
-    } else {
-        addBookToLibrary();
+    addBookToLibrary();
     title.value = author.value = pages.value = ""; hasRead.checked = false;
     form.classList.replace("form-display", "form-hide");
     addBookButton.classList.remove("form-hide");
-    }
 })

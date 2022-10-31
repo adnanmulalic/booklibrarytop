@@ -46,18 +46,21 @@ function showBooks(myLibrary) {
 
 addBookButton.addEventListener("click", () => {
     form.classList.replace("form-hide", "form-display");
-    addBookButton.classList.add("form-hide");
+    addBookButton.classList.add("hide-button");
 });
 
-cancelButton.addEventListener("click", () => {
+/* cancelButton.addEventListener("click", () => {
     title.value = author.value = pages.value = ""; hasRead.checked = false;
     form.classList.replace("form-display", "form-hide");
     addBookButton.classList.remove("form-hide");
-})
+}) */
 
 submitButton.addEventListener("click", () => {
     addBookToLibrary();
-    title.value = author.value = pages.value = ""; hasRead.checked = false;
-    form.classList.replace("form-display", "form-hide");
-    addBookButton.classList.remove("form-hide");
+    title.value = "";
+    author.value = "";
+    pages.value = "";
+    hasRead.checked = false;
+    //form.classList.replace("form-display", "form-hide");
+    addBookButton.classList.remove("hide-button");
 })

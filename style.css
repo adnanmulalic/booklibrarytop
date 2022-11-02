@@ -45,5 +45,8 @@ main {
     display: flex;
     width: 200px;
     height: 250px;
+}
 
+#same-book-error {
+    outline: red solid 1px;
 }

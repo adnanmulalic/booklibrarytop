@@ -2,6 +2,7 @@ const addBookButton = document.querySelector("#addBookButton");
 const submitButton = document.querySelector("#submitButton");
 const form = document.querySelector("#form");
 const title = document.querySelector("#title");
+const sameBookError = document.querySelector("#same-book-error");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const hasRead = document.querySelector("#read");
@@ -33,6 +34,15 @@ function addBookToLibrary() {
     bookShelf.appendChild(newBookOnShelf);
     //newBook.appendChild(bookInfo); */
 }
+
+
+title.addEventListener("change", () => {
+    myLibrary.forEach(book => {
+        if (book.title === title.value) {
+            sameBookError.setAttribute("hidden", "false");
+        } 
+    });
+})
 
 function showBooks(myLibrary) {
     myLibrary.forEach(book => {

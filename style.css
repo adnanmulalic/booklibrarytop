@@ -16,7 +16,7 @@ main {
     scale: 0;
 }
 
-.hide-button {
+.hide-element {
     display: none;
 }
 
@@ -43,8 +43,17 @@ main {
 .book {
     background-color: grey;
     display: flex;
+    flex-direction: column;
     width: 200px;
     height: 250px;
+}
+
+.book-already-read {
+    background-color: green;
+}
+
+.book-not-read {
+    background-color: red;
 }
 
 #same-book-error {

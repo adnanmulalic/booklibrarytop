@@ -29,41 +29,46 @@ function addBookToLibrary() {
     bookAuthor.innerHTML = newBook.author;
     let bookPages = document.createElement("p");
     bookPages.innerHTML = newBook.pages;
-    newBookOnShelf.append(bookTitle, bookAuthor, bookPages);
+    let hasAlreadyRead = document.createElement("button");
+    if (hasRead.checked === true) {
+        hasAlreadyRead.innerHTML = "Read";
+        hasAlreadyRead.classList.add("book-already-read");
+    }   else {
+        hasAlreadyRead.innerHTML = "Not Read"
+        hasAlreadyRead.classList.add("book-not-read");
+    }
+    newBookOnShelf.append(bookTitle, bookAuthor, bookPages, hasAlreadyRead);
     newBookOnShelf.classList.add("book");
     bookShelf.appendChild(newBookOnShelf);
     //newBook.appendChild(bookInfo); */
 }
 
 
-title.addEventListener("change", () => {
+title.addEventListener("keyup", () => {
     myLibrary.forEach(book => {
         if (book.title === title.value) {
-            sameBookError.setAttribute("hidden", "false");
-        } 
+            document.querySelector("#same-book-error").classList.remove("hide-element");
+            submitButton.setAttribute("disabled", "true");
+        } else {
+            document.querySelector("#same-book-error").classList.add("hide-element");
+            submitButton.removeAttribute("disabled", "");
+        }
     });
 })
-
-function showBooks(myLibrary) {
-    myLibrary.forEach(book => {
-        if (book.title === title.value) { 
-        }
-        newBook.classList.add("book");
-        bookShelf.appendChild(newBook);
-    });
-}
 
 const isTrue = (currentTruth) => currentTruth === true;
 
 addBookButton.addEventListener("click", () => {
     form.classList.replace("form-hide", "form-display");
-    addBookButton.classList.add("hide-button");
+    addBookButton.classList.add("hide-element");
 });
 
 cancelButton.addEventListener("click", () => {
     title.value = author.value = pages.value = ""; hasRead.checked = false;
     form.classList.replace("form-display", "form-hide");
-    addBookButton.classList.remove("hide-button");
+    addBookButton.classList.remove("hide-element");
+    document.querySelector("#same-book-error").classList.add("hide-element");
+    submitButton.removeAttribute("disabled", "");
 })
 
 submitButton.addEventListener("click", () => {
@@ -78,11 +83,21 @@ submitButton.addEventListener("click", () => {
         pages.value = "";
         hasRead.checked = false;
         form.classList.replace("form-display", "form-hide");
-        addBookButton.classList.remove("hide-button");
+        addBookButton.classList.remove("hide-element");
     } else {
         console.log("form not valid bossmang");
     }
 })
+
+
+/* function showBooks(myLibrary) {
+    myLibrary.forEach(book => {
+        if (book.title === title.value) { 
+        }
+        newBook.classList.add("book");
+        bookShelf.appendChild(newBook);
+    });
+} */
 
 /* submitButton.addEventListener("click", () => {
     let arrayOfTruths = [];

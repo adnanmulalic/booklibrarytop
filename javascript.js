@@ -22,15 +22,23 @@ function Book (title, author, pages, read) {
 function addBookToLibrary() {
     let newBook = new Book(title.value, author.value, pages.value, hasRead.checked);
     myLibrary.push(newBook);
-    let newBookOnShelf = document.createElement("div");
+    let bookShelfArray = Array.from(bookShelf);
+    myLibrary.forEach(book => {
+        bookShelfArray.forEach(bookOnShelf => {
+            if (myLibrary.indexOf(book) === bookOnShelf.dataset) {
+                console.log("Same Index")
+            }
+        })
+    let indexNumber = myLibrary.indexOf(book);
+        let newBookOnShelf = document.createElement("div");
     let bookTitle = document.createElement("p");
-    bookTitle.innerHTML = newBook.title;
+    bookTitle.innerHTML = book.title;
     let bookAuthor = document.createElement("p");
-    bookAuthor.innerHTML = newBook.author;
+    bookAuthor.innerHTML = book.author;
     let bookPages = document.createElement("p");
-    bookPages.innerHTML = newBook.pages;
+    bookPages.innerHTML = book.pages;
     let hasAlreadyRead = document.createElement("button");
-    if (hasRead.checked === true) {
+    if (book.read === true) {
         hasAlreadyRead.innerHTML = "Read";
         hasAlreadyRead.classList.add("book-already-read");
     }   else {
@@ -38,9 +46,10 @@ function addBookToLibrary() {
         hasAlreadyRead.classList.add("book-not-read");
     }
     newBookOnShelf.append(bookTitle, bookAuthor, bookPages, hasAlreadyRead);
+    newBookOnShelf.setAttribute("data-id", indexNumber);
     newBookOnShelf.classList.add("book");
     bookShelf.appendChild(newBookOnShelf);
-    //newBook.appendChild(bookInfo); */
+    })
 }
 
 
@@ -55,6 +64,10 @@ title.addEventListener("keyup", () => {
         }
     });
 })
+
+/* bookShelf.querySelectorAll("button").addEventListener("click", () => {
+    document.querySelector("")
+}) */
 
 const isTrue = (currentTruth) => currentTruth === true;
 
@@ -118,3 +131,26 @@ submitButton.addEventListener("click", () => {
 }) */
 
 //if (inputs.forEach(input => {input.validity.valid}).every(isTrue)) was trying something
+
+/* function addBookToLibrary() {
+    let newBook = new Book(title.value, author.value, pages.value, hasRead.checked);
+    myLibrary.push(newBook);
+    let newBookOnShelf = document.createElement("div");
+    let bookTitle = document.createElement("p");
+    bookTitle.innerHTML = newBook.title;
+    let bookAuthor = document.createElement("p");
+    bookAuthor.innerHTML = newBook.author;
+    let bookPages = document.createElement("p");
+    bookPages.innerHTML = newBook.pages;
+    let hasAlreadyRead = document.createElement("button");
+    if (hasRead.checked === true) {
+        hasAlreadyRead.innerHTML = "Read";
+        hasAlreadyRead.classList.add("book-already-read");
+    }   else {
+        hasAlreadyRead.innerHTML = "Not Read"
+        hasAlreadyRead.classList.add("book-not-read");
+    }
+    newBookOnShelf.append(bookTitle, bookAuthor, bookPages, hasAlreadyRead);
+    newBookOnShelf.classList.add("book");
+    bookShelf.appendChild(newBookOnShelf);
+    //newBook.appendChild(bookInfo); */

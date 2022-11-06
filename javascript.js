@@ -19,18 +19,23 @@ function Book (title, author, pages, read) {
     this.read = read;
 }
 
+function resetBookshelf() {
+    while (bookShelf.firstChild) {
+        bookShelf.removeChild(bookShelf.firstChild);
+    }
+}
+
+function removeBook(i) {
+    
+}
+
 function addBookToLibrary() {
     let newBook = new Book(title.value, author.value, pages.value, hasRead.checked);
     myLibrary.push(newBook);
-    let bookShelfArray = Array.from(bookShelf);
+    resetBookshelf();
     myLibrary.forEach(book => {
-        bookShelfArray.forEach(bookOnShelf => {
-            if (myLibrary.indexOf(book) === bookOnShelf.dataset) {
-                console.log("Same Index")
-            }
-        })
     let indexNumber = myLibrary.indexOf(book);
-        let newBookOnShelf = document.createElement("div");
+    let newBookOnShelf = document.createElement("div");
     let bookTitle = document.createElement("p");
     bookTitle.innerHTML = book.title;
     let bookAuthor = document.createElement("p");
@@ -45,7 +50,9 @@ function addBookToLibrary() {
         hasAlreadyRead.innerHTML = "Not Read"
         hasAlreadyRead.classList.add("book-not-read");
     }
-    newBookOnShelf.append(bookTitle, bookAuthor, bookPages, hasAlreadyRead);
+    let removeBook = document.createElement("button");
+    removeBook.innerHTML = "Remove book";
+    newBookOnShelf.append(bookTitle, bookAuthor, bookPages, hasAlreadyRead, removeBook);
     newBookOnShelf.setAttribute("data-id", indexNumber);
     newBookOnShelf.classList.add("book");
     bookShelf.appendChild(newBookOnShelf);

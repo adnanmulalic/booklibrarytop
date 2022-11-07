@@ -47,11 +47,30 @@ function addBookToLibrary() {
         hasAlreadyRead.innerHTML = "Read";
         hasAlreadyRead.classList.add("book-already-read");
     }   else {
-        hasAlreadyRead.innerHTML = "Not Read"
+        hasAlreadyRead.innerHTML = "Not Read";
         hasAlreadyRead.classList.add("book-not-read");
     }
+    hasAlreadyRead.addEventListener("click", () => {
+        readStatusIndex = hasAlreadyRead.parentElement.dataset.id;
+        if (hasAlreadyRead.className === "book-already-read") {
+            hasAlreadyRead.innerHTML = "Not Read";
+            hasAlreadyRead.classList.replace("book-already-read", "book-not-read");
+            myLibrary[readStatusIndex].read = false;
+        } else if (hasAlreadyRead.className === "book-not-read"){
+            hasAlreadyRead.innerHTML = "Read";
+            hasAlreadyRead.classList.replace("book-not-read", "book-already-read");
+            myLibrary[readStatusIndex].read = true;
+        }
+        console.log("this worked too bossmang")
+    })
     let removeBook = document.createElement("button");
     removeBook.innerHTML = "Remove book";
+    removeBook.addEventListener("click", () => {
+        deletedBookIndex = removeBook.parentElement.dataset.id;
+        myLibrary.splice(deletedBookIndex, 1);
+        removeBook.parentElement.remove();
+        console.log("this worked bossmang");
+    })
     newBookOnShelf.append(bookTitle, bookAuthor, bookPages, hasAlreadyRead, removeBook);
     newBookOnShelf.setAttribute("data-id", indexNumber);
     newBookOnShelf.classList.add("book");
@@ -61,19 +80,20 @@ function addBookToLibrary() {
 
 
 title.addEventListener("keyup", () => {
-    myLibrary.forEach(book => {
-        if (book.title === title.value) {
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].title === title.value) {
             document.querySelector("#same-book-error").classList.remove("hide-element");
             submitButton.setAttribute("disabled", "true");
+            break;
         } else {
             document.querySelector("#same-book-error").classList.add("hide-element");
             submitButton.removeAttribute("disabled", "");
-        }
-    });
+        }   
+    }
 })
 
 /* bookShelf.querySelectorAll("button").addEventListener("click", () => {
-    document.querySelector("")
+    document.querySelector("") //never do this again!!
 }) */
 
 const isTrue = (currentTruth) => currentTruth === true;

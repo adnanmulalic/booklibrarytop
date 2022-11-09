@@ -25,10 +25,6 @@ function resetBookshelf() {
     }
 }
 
-function removeBook(i) {
-    
-}
-
 function addBookToLibrary() {
     let newBook = new Book(title.value, author.value, pages.value, hasRead.checked);
     myLibrary.push(newBook);
@@ -65,6 +61,7 @@ function addBookToLibrary() {
     })
     let removeBook = document.createElement("button");
     removeBook.innerHTML = "Remove book";
+    removeBook.classList.add("remove-book");
     removeBook.addEventListener("click", () => {
         deletedBookIndex = removeBook.parentElement.dataset.id;
         myLibrary.splice(deletedBookIndex, 1);
@@ -100,13 +97,14 @@ const isTrue = (currentTruth) => currentTruth === true;
 
 addBookButton.addEventListener("click", () => {
     form.classList.replace("form-hide", "form-display");
-    addBookButton.classList.add("hide-element");
+    //addBookButton.classList.add("hide-element");
+    document.querySelector("main").classList.add("blured");
 });
 
 cancelButton.addEventListener("click", () => {
     title.value = author.value = pages.value = ""; hasRead.checked = false;
     form.classList.replace("form-display", "form-hide");
-    addBookButton.classList.remove("hide-element");
+    document.querySelector("main").classList.remove("blured");
     document.querySelector("#same-book-error").classList.add("hide-element");
     submitButton.removeAttribute("disabled", "");
 })
@@ -123,7 +121,7 @@ submitButton.addEventListener("click", () => {
         pages.value = "";
         hasRead.checked = false;
         form.classList.replace("form-display", "form-hide");
-        addBookButton.classList.remove("hide-element");
+        document.querySelector("main").classList.remove("blured");
     } else {
         console.log("form not valid bossmang");
     }

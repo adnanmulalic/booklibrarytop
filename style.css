@@ -1,10 +1,29 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 main {
     text-align: center;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 3rem;
+    color: white;
+    background-color: burlywood;
+}
+
+#addBookButton {
+    border: none;
+    padding: 1rem;
+    font-size: 2rem;
+    border-radius: 5px;
+    margin: 1rem;
+    color: white;
+    background-color: burlywood;
+    border: 2px groove brown;
 }
 
 #form-container {
@@ -13,7 +32,7 @@ main {
 }
 
 .form-hide {
-    scale: 0;
+    position: fixed;
 }
 
 .hide-element {
@@ -24,7 +43,8 @@ main {
     text-align: center;
     position: absolute;
     top: 200px;
-    background-color: gray;
+    color: white;
+    background-color: burlywood;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -33,27 +53,50 @@ main {
     gap: 5px;
 }
 
+.blured {
+    filter: blur(2px);
+}
+
 #book-shelf {
     display: grid;
-    justify-content: center;
+    justify-content: start;
     grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
     gap: 1rem;
 }
 
 .book {
-    background-color: grey;
-    display: flex;
-    flex-direction: column;
+    background-color: burlywood;
+    color: white;
+    margin: 1rem;
+    border: 2px groove brown;
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px grey;
     width: 200px;
     height: 250px;
 }
 
 .book-already-read {
     background-color: green;
+    border: 1px solid brown;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 2px;
 }
 
 .book-not-read {
     background-color: red;
+    border: 1px solid brown;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 2px;
+}
+
+.remove-book {
+    background-color: brown;
+    border: 1px solid burlywood;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 2px;
 }
 
 #same-book-error {
